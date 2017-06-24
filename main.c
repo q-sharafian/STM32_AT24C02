@@ -17,8 +17,8 @@ void main(){
 	SetPeriphAPB2(APB2_AFIO);
 
 // config pins for I2C 
-	Init_PIN(PORTB, PIN6, Config_Out_50MHz, Alter_Out_OD); // configuration out pin for I2C1 SCL
-	Init_PIN(PORTB, PIN7, Config_Out_50MHz, Alter_Out_OD); // Configuration out pin for I2C1 SDA
+	Init_PIN(PORTB, PIN6, Config_Out_50MHz, Alter_Out_OD); //configuration out pin for I2C1 SCL
+	Init_PIN(PORTB, PIN7, Config_Out_50MHz, Alter_Out_OD); //Configuration out pin for I2C1 SDA
 
 
 // initialize I2C1
