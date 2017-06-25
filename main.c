@@ -1,5 +1,7 @@
 
 #include "stm32f10x.h"
+#include "stm32f10x_i2c.h"
+#include "stm32f10x_gpio.h"
 #include "AT24C02.h"
 
 
@@ -17,9 +19,17 @@ void main(){
 	SetPeriphAPB2(APB2_AFIO);
 
 // config pins for I2C 
-	Init_PIN(PORTB, PIN6, Config_Out_50MHz, Alter_Out_OD); // configuration out pin for I2C1 SCL
-	Init_PIN(PORTB, PIN7, Config_Out_50MHz, Alter_Out_OD); // Configuration out pin for I2C1 SDA
+	GPIO_InitTypeDef GPIOPB6_Init;
+	GPIOPB6_Init.GPIO_Mode = GPIO_Mode_AF_OD;
+	GPIOPB6_Init.GPIO_Pin = 6;
+	GPIOPB6_Init.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &GPIOPB6_Init);// config SCL
 
+	GPIO_InitTypeDef GPIOPB7_Init;
+	GPIOPB7_Init.GPIO_Mode = GPIO_Mode_AF_OD;
+	GPIOPB7_Init.GPIO_Pin = 6;
+	GPIOPB7_Init.GPIO_Speed = GPIO_Speed_50MHz;
+	GPIO_Init(GPIOB, &GPIOPB7_Init);// config SDA
 
 // initialize I2C1
 	I2C_Cmd(I2C1, ENABLE);
